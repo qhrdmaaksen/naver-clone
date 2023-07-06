@@ -7,13 +7,6 @@
   <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
   <title>NAVER</title>
   <style>
-    /* 브라우저의 기본 css 제거 */
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-    }
-
     /* css 변수 */
     :root {
       --color_title: #080808;
@@ -68,6 +61,18 @@
       --color_enter_bg_rgb: 242, 241, 251;
     }
 
+    * {
+      box-sizing: border-box;
+    }
+
+    /* 브라우저의 기본 css 제거 */
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+
     /* 화면 기본 전체 */
     #wrap {
       text-align: center;
@@ -91,11 +96,12 @@
       position: relative;
     }
 
-    /* 헤드의 햄버거 메뉴 */
-    #header-hamburger {
+    /* 헤더 햄버거, 네이버페이, 알림의 공통 스타일 */
+    #header-hamburger,
+    #header-naverpay,
+    #header-notice {
       position: absolute;
       top: 18px;
-      left: -10px;
       display: inline-block;
       padding: 10px;
       background: none;
@@ -103,7 +109,9 @@
       cursor: pointer;
     }
 
-    #header-hamburger:hover::before {
+    #header-hamburger:hover::before,
+    #header-naverpay:hover::before,
+    #header-notice:hover::before {
       content: '';
       position: absolute;
       z-index: 0;
@@ -115,15 +123,48 @@
       border-radius: 50%;
     }
 
-    /* 헤더 햄버거 메뉴의 자식 div */
-    #header-hamburger>div {
+    #header-hamburger>div,
+    #header-naverpay>div,
+    #header-notice>div {
       position: relative;
       background-image: url(./sp_main.png);
       background-size: 422px 405px;
-      background-position: -335px -284px;
+      background-position: -31px -316px;
       z-index: 1;
       width: 26px;
       height: 26px;
+    }
+
+    /* 헤더의 햄버거 메뉴 */
+    #header-hamburger {
+      left: -10px;
+    }
+
+    /* 헤더 햄버거 메뉴의 자식 div */
+    #header-hamburger>div {
+      background-position: -335px -284px;
+    }
+
+    /* 헤더의 네이버 페이 */
+    #header-naverpay {
+      right: 42px;
+      padding: 10px 8px;
+    }
+
+    /* 헤더 네이버 페이의 자식 div */
+    #header-naverpay>div {
+      background-position: -31px -316px;
+      width: 30px;
+    }
+
+    /* 헤더의 알림 */
+    #header-notice {
+      right: -10px;
+    }
+
+    /* 헤더 알림의 자식 div */
+    #header-notice>div {
+      background-position: -364px -27px;
     }
 
     .blind {
@@ -147,12 +188,23 @@
           <span class="blind">확장 영역</span>
           <!-- ::after -->
         </button>
+        <button id="header-naverpay">
+          <!-- ::before -->
+          <div></div>
+          <span class="blind">네이버 페이</span>
+          <!-- ::after -->
+        </button>
+        <button id="header-notice">
+          <!-- ::before -->
+          <div></div>
+          <span class="blind">알림</span>
+          <!-- ::after -->
+        </button>
+        <div id="search"></div>
+        <div id="nav"></div>
+        <div id="main"></div>
       </div>
-      <div id="search"></div>
-      <div id="nav"></div>
-      <div id="main"></div>
     </div>
-  </div>
 </body>
 
 </html>
